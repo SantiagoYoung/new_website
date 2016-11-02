@@ -19,11 +19,11 @@ def contacts(request):
 
     d = {}
     d['location'] = contact.location
-    d['location_picture'] = contact.location_picture
+    d['location_picture'] = contact.location_picture.url
     d['email'] = contact.email
-    d['email_picture'] = contact.email_picture
+    d['email_picture'] = contact.email_picture.url
     d['phone'] = contact.phone
-    d['phone_picture'] = contact.phone_picture
+    d['phone_picture'] = contact.phone_picture.url
 
     data = json.dumps(d)
 
@@ -44,7 +44,7 @@ def message(request):
                                message=message)
 
         return JsonResponse({'msg': 'success', 'status': 1})
-
+    return JsonResponse({'msg': 'no message', 'status': 0 })
 
 
 

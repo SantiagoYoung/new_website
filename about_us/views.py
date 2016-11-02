@@ -15,15 +15,15 @@ def about_page(request):
 
 def about_us(request):
 
-    abouts = About_us.objects.filter(display=True).order_by('?')[0]
+    about = About_us.objects.filter(display=True).order_by('?')[0]
 
     l = []
-    for about in abouts:
-        d = {}
-        d['title'] = about.title
-        d['description'] = about.description
-        d['picture'] = about.picture
-        l.append(d)
+    # for about in abouts:
+    d = {}
+    d['title'] = about.title
+    d['description'] = about.description
+    d['picture'] = about.picture.url
+    l.append(d)
 
     data = json.dumps(l)
 
@@ -53,7 +53,7 @@ def facts(request):
     for fact in facts:
         d = {}
         d['title'] = fact.title
-        d['picture'] = fact.picture
+        d['picture'] = fact.picture.url
         d['description'] = fact.description
         l.append(d)
 

@@ -1,10 +1,10 @@
 from django.conf.urls import url
 import views
 
-urlpatters =[
+urlpatterns =[
 
 
-    url(r'^contacts$/', views.contacts, name='contacts'),
-    url(r'^message$/', views.message, name='message'),
+    url(r'^contacts/$', views.contacts, name='contacts'),
+    url(r'^message/$', views.message, name='message'),
 
 ]

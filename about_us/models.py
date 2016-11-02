@@ -9,11 +9,17 @@ class About_us(models.Model):
     picture = models.ImageField(upload_to='about/', null=True, blank=True)
     display = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return self.title
+
 class History(models.Model):
     about = models.ForeignKey(About_us)
 
     year = models.CharField(max_length=12, verbose_name=u'年限')
     description = models.TextField(verbose_name=u'公司经历')
+
+    def __unicode__(self):
+        return self.year
 
 
 class Facts(models.Model):
@@ -26,6 +32,9 @@ class Facts(models.Model):
     edit_time = models.DateTimeField(auto_now=True)
     display = models.BooleanField(default=False)
 
+    def __unicode__(self):
+        return self.title
+
 
 class QnA(models.Model):
     about = models.ForeignKey(About_us)
@@ -34,3 +43,6 @@ class QnA(models.Model):
     answer = models.TextField(verbose_name=u'回答')
     display = models.BooleanField(default=False)
     create_time = models.DateTimeField(default=datetime.now())
+
+    def __unicode__(self):
+        return self.question

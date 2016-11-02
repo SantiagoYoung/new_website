@@ -16,6 +16,9 @@ class Contact(models.Model):
     phone_picture = models.ImageField(upload_to='contact/')
     # description = models.CharField(max_length=150, verbose_name=u'描述')
 
+    def __unicode__(self):
+        return self.phone
+
 
 class Message(models.Model):
     sender_name = models.CharField(max_length=30, verbose_name=u'发信人')
@@ -25,6 +28,8 @@ class Message(models.Model):
     title = models.CharField(max_length=20, verbose_name=u'标题')
     description = models.CharField(max_length=150, verbose_name=u'描述')
 
+    def __unicode__(self):
+        return self.sender_name
 
 
 

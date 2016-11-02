@@ -20,10 +20,12 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 
-    # url(r'^website/', include('website.urls')),
-    # url(r'^contact/', include('contact.urls')),
-    # url(r'^news/', include('news.urls')),
-    # url(r'^about/', include('about_us.urls')),
+    url(r'^a/', include('website.urls')),
+    url(r'^b/', include('contact.urls')),
+    # url(r'^c/', include('news.urls')),
+    url(r'^c/', include('about_us.urls')),
+
+
 
     url(r'^home/', website_views.home_page, name='home_page'),
     url(r'^contact', contact_views.contact_page, name='contact_page'),

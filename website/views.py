@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Service,Portfolio,Carousel_figure,Client_words
+from .models import Service,Portfolio,Carousel_figure,Client_words,Structure
 import json
 from django.http import JsonResponse, HttpResponse
 
@@ -21,28 +21,30 @@ def home_page(request):
 def all_service(request):
 
     services = Service.objects.all().order_by('is_featured')
+
     l = []
     for service in services:
         d = {}
         d['name'] = service.name
         d['description'] = service.description
-        d['thumbnail'] = service.thumbnail
-
+        d['thumbnail'] = service.thumbnail.url
+        l.append(d)
     data = json.dumps(l)
 
     return HttpResponse(data, content_type='application/json')
+    # return JsonResponse({'data':l})
 
 
 def feature_service(request):
 
-    feature_services = Service.objects.filter(is_featured=True)
+    feature_services = Service.objects.filter(is_featured=True)[0:3]
 
     l = []
     for service in feature_services:
         d = {}
         d['name'] = service.name
         d['description'] = service.description
-        d['thumbnail'] = service.thubnail
+        d['thumbnail'] = service.thumbnail.url
         # d['is_featured'] = service.is_featured
         l.append(d)
 
@@ -59,7 +61,7 @@ def carousel_figure(request):
     for carousel in carousels:
         d = {}
         d['title'] = carousel.title
-        d['piture'] = carousel.piture
+        d['piture'] = carousel.piture.url
         d['description'] = carousel.description
         l.append(d)
 
@@ -96,14 +98,26 @@ def client_words(request):
         d['client_name'] = word.client_name
         d['client_title'] = word.client_title
         d['client_company'] = word.client_company
-        d['picture'] = word.picture
+        d['picture'] = word.picture.url
         l.append(d)
 
     data = json.dumps(l)
 
     return HttpResponse(data, content_type='application/json')
 
+def section(request):
 
+    sections = Structure.objects.all()
+
+    l = []
+    for section in sections:
+        d ={}
+        d['section'] = section.section
+        d['description'] = section.description
+        l.append(d)
+    data = json.dumps(l)
+
+    return HttpResponse(data, content_type='application/json')
 
 
 

@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=12, verbose_name=u'服务', )
+    name = models.CharField(max_length=256, verbose_name=u'服务', )
     description = models.TextField(verbose_name=u'服务描述')
     thumbnail = models.ImageField(upload_to='service/',verbose_name=u'头像')
     is_featured = models.BooleanField(default=False, verbose_name=u'优秀')
@@ -18,7 +18,7 @@ class Service(models.Model):
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -26,7 +26,7 @@ class Service(models.Model):
 class Portfolio(models.Model):
 
     service = models.ForeignKey(Service)
-    name = models.CharField(max_length=12, verbose_name=u'项目名称')
+    name = models.CharField(max_length=256, verbose_name=u'项目名称')
     description = models.TextField(verbose_name=u'项目描述')
     create_time = models.DateTimeField(default=datetime.now())
     edit_time = models.DateTimeField(auto_now=True)
@@ -37,13 +37,13 @@ class Portfolio(models.Model):
         verbose_name = 'Portfolio'
         verbose_name_plural = 'Portfolio'
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
 class Carousel_figure(models.Model):
 
-    title = models.CharField(max_length=12, verbose_name=u'标题')
+    title = models.CharField(max_length=256, verbose_name=u'标题')
     piture = models.ImageField(upload_to='carousel/')
     description = models.TextField(verbose_name=u'简介')
     create_time = models.DateTimeField(default=datetime.now())
@@ -53,14 +53,14 @@ class Carousel_figure(models.Model):
         verbose_name_plural = 'Carousel'
         verbose_name = 'Carousel'
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 class Client_words(models.Model):
-    title = models.CharField(max_length=20, verbose_name=u'标题')
-    client_name = models.CharField(max_length=12, verbose_name=u'客户名字')
-    client_title = models.CharField(max_length=12, verbose_name=u'客户职位')
-    client_company = models.CharField(max_length=12, verbose_name=u'客户公司')
+    title = models.CharField(max_length=256, verbose_name=u'标题')
+    client_name = models.CharField(max_length=256, verbose_name=u'客户名字')
+    client_title = models.CharField(max_length=256, verbose_name=u'客户职位')
+    client_company = models.CharField(max_length=256, verbose_name=u'客户公司')
     client_words = models.TextField(verbose_name=u'客户寄语')
     create_time = models.DateTimeField(default=datetime.now())
     edit_time = models.DateTimeField(auto_now=True)
@@ -71,14 +71,14 @@ class Client_words(models.Model):
         verbose_name = 'Client'
         verbose_name_plural = 'Client'
 
-    def __str__(self):
+    def __unicode__(self):
         return self.client_name
 
 
 
 class Structure(models.Model):
 
-    section = models.CharField(max_length=20, verbose_name=u'主题')
+    section = models.CharField(max_length=256, verbose_name=u'主题')
     description = models.TextField(verbose_name=u'主题描述')
 
     create_time = models.DateTimeField(default=datetime.now())
@@ -88,7 +88,7 @@ class Structure(models.Model):
         verbose_name_plural = 'Structure'
         verbose_name = 'Structure'
 
-    def __str__(self):
+    def __unicode__(self):
         return self.section
 
 
