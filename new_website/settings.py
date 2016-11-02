@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'website',
     'about_us',
     'news',
+    'contact',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,15 +83,15 @@ WSGI_APPLICATION = 'new_website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'website',
-        'USER': 'root',
-        'PASSWORD': 'yinxianjun',
-        'HOST':'',
-        'PORT':'',
+    # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     'NAME': 'website',
+    #     'USER': 'root',
+    #     'PASSWORD': 'yinxianjun',
+    #     'HOST':'',
+    #     'PORT':'',
     }
-
 }
 
 
