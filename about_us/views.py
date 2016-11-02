@@ -1,7 +1,14 @@
+# -*- coding: utf-8 -*-s
 from django.shortcuts import render
 from .models import Facts, History, About_us, QnA
 from django.http import HttpResponse
 import json
+
+
+
+def about_page(request):
+
+    return render(request, 'about.html')
 
 
 

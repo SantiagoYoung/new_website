@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
 from .models import Contact, Message
 
+
+
+# 联系的页面
+def contact_page(request):
+
+    return render(request, 'contact.html')
 
 
 

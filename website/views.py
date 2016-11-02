@@ -4,6 +4,20 @@ import json
 from django.http import JsonResponse, HttpResponse
 
 
+def portfolio_page(request):
+
+    return render(request, 'portfolio.html')
+
+def service_page(request):
+
+    return render(request, 'services.html')
+
+def home_page(request):
+
+    return render(request,'index.html')
+
+
+
 def all_service(request):
 
     services = Service.objects.all().order_by('is_featured')
