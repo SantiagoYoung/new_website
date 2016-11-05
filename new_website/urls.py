@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -7,23 +8,28 @@ from contact import views as contact_views
 from website import views as website_views
 from about_us import views as about_views
 
+import xadmin
 
+xadmin.autodiscover()
 
-
-
+# from xadmin.plugins import xversion
+# xversion.register_models()
 
 urlpatterns = [
 
     # Examples:
     # url(r'^$', 'new_website.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    #
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^xadmin/', include(xadmin.site.urls), name='xadmin'),
+
+
 
     url(r'^a/', include('website.urls')),
     url(r'^b/', include('contact.urls')),
-    # url(r'^c/', include('news.urls')),
     url(r'^c/', include('about_us.urls')),
+    url(r'^d/', include('news.urls')),
 
 
 

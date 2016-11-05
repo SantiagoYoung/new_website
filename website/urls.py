@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^carousel_figure/$', views.carousel_figure, name='carousel_figure'),
     url(r'^portfolio/$', views.portfolio, name='portfolio'),
     url(r'^client_words/$', views.client_words, name='client_words'),
-    url(r'^section/$', views.section, name='section')
+    url(r'^section/$', views.section, name='section'),
+    url(r'^excel_export', views.excel_export, name='excel_export'),
 
 
 ]

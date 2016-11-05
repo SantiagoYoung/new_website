@@ -4,6 +4,12 @@ from django.db import models
 from datetime import datetime
 
 
+
+
+
+
+
+
 class Service(models.Model):
     name = models.CharField(max_length=256, verbose_name=u'服务', )
     description = models.TextField(verbose_name=u'服务描述')
@@ -14,9 +20,10 @@ class Service(models.Model):
 
 
 
+
     class Meta:
-        verbose_name = 'Service'
-        verbose_name_plural = 'Services'
+        verbose_name = u'服务'
+        verbose_name_plural = u'服务'
 
     def __unicode__(self):
         return self.name
@@ -34,8 +41,8 @@ class Portfolio(models.Model):
     display = models.BooleanField(default=False, verbose_name=u'展示')
 
     class Meta:
-        verbose_name = 'Portfolio'
-        verbose_name_plural = 'Portfolio'
+        verbose_name = u'项目'
+        verbose_name_plural = u'项目'
 
     def __unicode__(self):
         return self.name
@@ -50,8 +57,8 @@ class Carousel_figure(models.Model):
     edit_time = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = 'Carousel'
-        verbose_name = 'Carousel'
+        verbose_name_plural = u'轮播图'
+        verbose_name =  u'轮播图'
 
     def __unicode__(self):
         return self.title
@@ -68,8 +75,8 @@ class Client_words(models.Model):
     display = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'Client'
-        verbose_name_plural = 'Client'
+        verbose_name = u'客户寄语'
+        verbose_name_plural = u'客户寄语'
 
     def __unicode__(self):
         return self.client_name
@@ -85,8 +92,8 @@ class Structure(models.Model):
 
 
     class Meta:
-        verbose_name_plural = 'Structure'
-        verbose_name = 'Structure'
+        verbose_name_plural = u'分区'
+        verbose_name = u'分区'
 
     def __unicode__(self):
         return self.section

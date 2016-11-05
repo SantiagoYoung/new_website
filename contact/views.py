@@ -44,6 +44,7 @@ def message(request):
                                message=message)
 
         return JsonResponse({'msg': 'success', 'status': 1})
+
     return JsonResponse({'msg': 'no message', 'status': 0 })
 
 

@@ -16,6 +16,10 @@ class Contact(models.Model):
     phone_picture = models.ImageField(upload_to='contact/')
     # description = models.CharField(max_length=150, verbose_name=u'描述')
 
+    class Meta:
+        verbose_name_plural = u'联系'
+        verbose_name =  u'联系'
+
     def __unicode__(self):
         return self.phone
 
@@ -27,6 +31,10 @@ class Message(models.Model):
     message = models.TextField(verbose_name=u'消息')
     title = models.CharField(max_length=20, verbose_name=u'标题')
     description = models.CharField(max_length=150, verbose_name=u'描述')
+
+    class Meta:
+        verbose_name_plural = u'信息'
+        verbose_name = u'信息'
 
     def __unicode__(self):
         return self.sender_name

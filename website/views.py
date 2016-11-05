@@ -1,7 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from .models import Service,Portfolio,Carousel_figure,Client_words,Structure
 import json
 from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
+import xlwt
+import StringIO
+
 
 
 def portfolio_page(request):
@@ -21,6 +26,10 @@ def home_page(request):
 def all_service(request):
 
     services = Service.objects.all().order_by('is_featured')
+
+    # date = '2016'
+    # services = Service.objects.filter(create_time__icontains=date)
+    # print services, '>>>>>>>>'
 
     l = []
     for service in services:
@@ -90,6 +99,9 @@ def portfolio(request):
 def client_words(request):
 
     words = Client_words.objects.filter(display=True)[0:3]
+    # eva = Client_words.objects.datetimes('create_time', 'month', order='DESC')
+    #
+    # print eva,'>>>>>>>>>>>>>>>>>>>'
 
     l = []
     for word in words:
@@ -123,6 +135,45 @@ def section(request):
 
 
 
+def excel_export(request):
+
+    file_name = 'test.xls'
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=%s' % file_name
+
+    ws = xlwt.Workbook(encoding='utf-8')
+    sheet_w = ws.add_sheet(u'数据第一页')
+
+    sheet_w.write(0, 0, 'id')
+    sheet_w.write(0, 1, 'name')
+    sheet_w.write(0, 2, 'descrip')
+    sheet_w.write(0, 3, 'create_time')
+    sheet_w.write(0, 4, 'edit_time')
+
+    excel_row = 1
+
+    services = Service.objects.all()
+
+    for service in services:
+        service_id = service.id
+        service_name = service.name
+        service_des = service.description
+        service_create = service.create_time.strftime('%Y-%m')
+        service_edit = service.edit_time.strftime('%Y-%m')
+
+        sheet_w.write(excel_row, 0, service_id)
+        sheet_w.write(excel_row, 1, service_name)
+        sheet_w.write(excel_row, 2, service_des)
+        sheet_w.write(excel_row, 3, service_create)
+        sheet_w.write(excel_row, 4, service_edit)
+        excel_row += 1
+
+
+    output = StringIO.StringIO()
+    ws.save(output)
+    output.seek(0)
+    response.write(output.getvalue())
+    return response
 
 
 

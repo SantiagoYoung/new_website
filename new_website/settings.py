@@ -43,6 +43,10 @@ INSTALLED_APPS = (
     'news',
     'contact',
 
+    'xadmin',
+    'crispy_forms',
+    'reversion',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,7 +66,7 @@ ROOT_URLCONF = 'new_website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -98,7 +102,7 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
-
+#
 LANGUAGE_CODE = 'zh-hans'
 # DEFAULT_CHARSET = 'utf-8'
 
